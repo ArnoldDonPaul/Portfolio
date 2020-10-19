@@ -1,0 +1,290 @@
+@import './mixins';
+
+html {
+    background: lightgrey;
+}
+
+body {
+    height: 100%;
+}
+
+.spiderweb {
+    background: white;
+    width: 2px;
+    height: 820px;
+    margin-left: 25px;
+    @include desktop {
+        height: 800px;
+        margin-left: 40px;
+    }
+}
+
+.spider {
+    display: none;
+    @include tablet {
+        display: unset;
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        left: 3.5%;
+        animation: swing 2s infinite;
+        transform-origin: top;
+        transition: top 1s ease-in-out;
+        .body {
+            left: 0%;
+            width: 50px;
+            height: 30px;
+            background: black;
+            position: relative;
+            border-radius: 50%;
+            .eye {
+                width: 12px;//
+                height: 12px;//
+                background: white;
+                position: absolute;
+                bottom: 10px;//
+                border-radius: 50%;
+            }
+        }
+        .eye {
+            &.left {
+                left: 10px;
+            }
+            &.right {
+                right: 10px;
+            }
+        }
+        .eye::after {
+            background: black;
+            width: 4px;
+            height: 4px;
+            content:'';
+            display: block;
+            margin: 35%;
+            border-radius: 50%;
+            animation: look 8s infinite;
+        }
+        .legs {
+            position: absolute;
+            bottom: -2%;
+            z-index: -1;
+            .leg {
+                width: 20px;
+                height: 22px;
+                margin-top: -18px;
+                border-top: 5px solid black;
+                border-radius: 15px 15px 0 0;
+            }
+            &.left {
+                left: -47%;
+            }
+            &.right {
+                right: -30%;
+            }
+        }
+    }
+    @include desktop {
+        left: 10%;
+        .body {
+            width: 80px;
+            height: 60px;
+            .eye {
+                width: 23px;
+                height: 23px;
+                bottom: 20px;
+            }
+        }
+        .eye {
+            &.left {
+                left: 15px;
+            }
+            &.right {
+                right: 15px;
+            }
+        }
+        .eye::after {
+            width: 7px;
+            height: 7px;
+            margin: 40%;
+        }
+        .legs {
+            bottom: -2.5%;
+            .leg {
+                width: 40px;
+                height: 30px;
+                margin-top: -17px;
+            }
+            &.left {
+                left: -49%;
+            }
+            &.right {
+                right: -36%;
+            }
+        }
+    }
+}
+
+.legs {
+    animation: swing 2s infinite;
+    transform-origin: top;
+    &.left {
+        .leg:nth-child(1) {
+            transform: rotate(10deg);
+            margin-left: 17px;
+        }
+        .leg:nth-child(2) {
+            transform: rotate(-20deg);
+            margin-left: 10px;
+        }
+        .leg:nth-child(3) {
+            transform: rotate(-30deg);
+            margin-left: 15px;
+        }
+        .leg:nth-child(4) {
+            transform: rotate(-50deg);
+            margin-left: 30px;
+        }
+    }
+    &.right {
+        .leg:nth-child(1) {
+            transform: rotate(-10deg);
+            margin-left: -17px;
+        }
+        .leg:nth-child(2) {
+            transform: rotate(20deg);
+            margin-left: -10px;
+        }
+        .leg:nth-child(3) {
+            transform: rotate(30deg);
+            margin-left: -15px;
+        }
+        .leg:nth-child(4) {
+            transform: rotate(50deg);
+            margin-left: -30px;
+        }
+    }
+}
+
+@keyframes look {
+    0%, 40%, 100% {
+        transform: translateX(0);
+    }
+    45%, 95% {
+        transform: translateX(80%);
+    }
+}
+
+@keyframes swing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+//Hero
+
+.hero {
+    width: 250px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: helvetica;
+    &__title {
+        font-size: 15px;
+        font-weight: unset;
+        margin-bottom: 10px;
+    }
+    &__description {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0 auto;
+    }
+    @include tablet {
+        width: 750px;
+        margin: 50px auto;
+        &__title {
+            font-size: 30px;
+        }
+        &__description {
+            width: 650px;
+            font-size: 50px;
+        }
+    }
+}
+
+.hero:hover + {
+    .spider {
+    top: -70%;
+    }
+}
+
+//Main Section
+
+.main {
+    height: 400px;
+    @include tablet {
+        height: 550px;
+    }
+}
+
+.about {
+    width: 300px;
+    margin: auto;
+    font-family: helvetica;
+    font-size: 25px;
+    text-align: center;
+    @include tablet {
+        width: 450px;
+        &__text {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+.imageContainer {
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    &__image {
+        height: 120px;
+    }
+    @include tablet {
+        &__image {
+            height: 200px;
+        }
+    }
+}
+
+//Footer
+
+.footer {
+    width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-family: helvetica;
+    text-align: center;
+    &__icon {
+        height: 30px;
+        margin-top: 15px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    &__text {
+        font-size: 20px;
+    }
+    &__link {
+        display: flex;
+        width: 150px;
+        text-decoration: none;
+        color: black;
+    }
+    @include tablet {
+        width: 550px;
+        flex-direction: row;
+    }
+}
