@@ -1,0 +1,56 @@
+@import '../../mixins';
+
+.hero {
+        display: flex;
+        align-items: center;
+        color: white;
+        &__text{
+            width: fit-content;
+            display: flex;
+            margin-right: 3px;
+            &--blink {
+                position: relative;
+                left: 1px;
+                bottom: 2.5px;
+                animation: blinker 1s linear infinite;
+              }
+            &--dynamic {
+                width: 300px;
+                padding-left: 3px;
+            }
+        }
+        &__dynamicSection {
+            width: 320px;
+            height: 23px;
+            display: flex;
+            flex: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: blue;
+        }
+        &__button {
+            cursor: pointer;
+            &--dice:hover {
+                opacity: 0.75;
+            }
+            &--dice:active {
+                opacity: 1;
+            }
+        }
+        @include desktop {
+          background-color: red;
+        }
+    }
+
+::-moz-selection{
+    background: blue;
+  }
+  ::selection{
+    background: blue;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
