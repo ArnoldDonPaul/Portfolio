@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/components/hero/hero.scss';
+import './hero.scss';
 
 //array of text that will populate onClick
 let myArray = [
@@ -10,9 +10,9 @@ let myArray = [
     "who will never not pet a dog.",
     "& black belt in Kung Fu.",
     "who thinks alpacas are delightful.",
-    "& happy you're here. Welcome!",
+    "who's happy you're here. Welcome!",
     "& coffee is my life force.",
-    "by day, asleep by night.",
+    "by day, billionaire vigilante by night. ᶻ ᶻ ᶻ",
     "& sometimes a huge nerd.",
     "& amateur card magician.",
     "& occasional rock climber.",

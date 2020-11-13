@@ -1,0 +1,21 @@
+@import '../styles/mixins';
+
+body {
+    color: white;
+    background-color: black;
+    margin: 20px 20px;
+}
+
+.heroMain {
+    display: none;
+    @include tablet {
+        display: unset;
+    }
+}
+
+::-moz-selection{
+    background: #000AFF;
+  }
+  ::selection{
+    background: #000AFF;
+  }

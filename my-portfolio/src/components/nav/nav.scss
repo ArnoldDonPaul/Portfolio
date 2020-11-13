@@ -1,0 +1,16 @@
+@import '../../styles/mixins';
+
+.navBar {
+    @include desktop {
+        width: 450px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.nav {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+}

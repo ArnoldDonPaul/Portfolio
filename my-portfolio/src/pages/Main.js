@@ -1,20 +1,22 @@
-import React from 'react';
-import { Route } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { Component } from 'react';
 
-import '../styles/pages/Main/Main.scss';
+import './Main.scss';
 
-import Hero from '../components/hero';
+import Nav from '../components/nav/nav'
+import Hero from '../components/hero/hero';
 
 
-function Main() {
-  return (
-    <BrowserRouter>
-      <div className="navComponent">
-        <Route component={Hero} />
-      </div>
-    </BrowserRouter>
-  );
+class Main extends Component {
+  render() {
+    return (
+      <>
+        <Nav />
+        <div className='heroMain'>
+          <Hero />
+        </div>
+      </>
+    );
+  }
 }
 
 export default Main;
