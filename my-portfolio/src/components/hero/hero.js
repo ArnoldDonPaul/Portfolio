@@ -10,9 +10,9 @@ let myArray = [
     "who will never not pet a dog.",
     "& black belt in Kung Fu.",
     "who thinks alpacas are delightful.",
-    "who's happy you're here. Welcome!",
+    "who's happy you clicked the button.",
     "& coffee is my life force.",
-    "by day, billionaire vigilante by night. ᶻ ᶻ ᶻ",
+    "by day, billionaire vigilante by night. ᶻᶻᶻ",
     "& sometimes a huge nerd.",
     "& amateur card magician.",
     "& occasional rock climber.",
@@ -76,7 +76,7 @@ class Hero extends Component {
                 if (j < newItem.length) {
                     document.getElementById("randomized").innerHTML += newItem.charAt(j);
                     j++;
-                    setTimeout(type, 10)
+                    setTimeout(type, 30)
                 }
             }
 
@@ -92,7 +92,7 @@ class Hero extends Component {
         return (
             <>
                 <div className="hero">
-                    <p className="hero__text">web developer </p>
+                    <p className="hero__text">web developer</p>
                     <div className="hero__dynamicSection">
                         <p><span className="hero__text--dynamic" id="randomized">based in Toronto, Canada.</span><span className="hero__text--blink">|</span></p>
                         <div className="hero__button" onClick={changeDisplay}><span className="hero__button--dice" role="img" aria-label="dice">🎲</span></div>

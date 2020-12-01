@@ -1,35 +1,35 @@
 @import '../../styles/mixins';
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 .hero {
       display: flex;
-      flex-direction: column;
       color: white;
-      @include desktop {
-        flex-direction: row;
-        align-items: center;
-      }
+      align-items: center;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 18px;
+      justify-content: left;
       &__text{
           width: fit-content;
           display: flex;
-          margin-bottom: 2px;
-          @include desktop {
-            margin: 0 3px 0 0;
-          }
+          margin: 2px;
+          padding-right: 8px;
           &--blink {
-              position: relative;
-              background-position: relative;
-              left: 1px;
-              bottom: 2.5px;
-              animation: blinker 1s linear infinite;
+                position: relative;
+                background-position: relative;
+                bottom: 1.5px;
+                left: -4px;
+                animation: blinker 1s linear infinite;
+                -webkit-user-select: none;
+                -moz-user-select: none;
             }
           &--dynamic {
-              width: 300px;
-              padding-left: 3px;
+                width: fit-content;
           }
       }
       &__dynamicSection {
-          width: 320px;
+          min-width: 100px;
           height: 23px;
+          padding: 2px;
           display: flex;
           flex: row;
           align-items: center;
@@ -38,6 +38,8 @@
       }
       &__button {
           cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
           &--dice:hover {
               opacity: 0.75;
           }

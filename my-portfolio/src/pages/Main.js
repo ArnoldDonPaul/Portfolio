@@ -4,7 +4,8 @@ import './Main.scss';
 
 import Nav from '../components/nav/nav'
 import Hero from '../components/hero/hero';
-
+import About from '../components/about/about'
+import Footer from '../components/footer/footer'
 
 class Main extends Component {
   render() {
@@ -14,6 +15,8 @@ class Main extends Component {
         <div className='heroMain'>
           <Hero />
         </div>
+        <About />
+        <Footer />
       </>
     );
   }

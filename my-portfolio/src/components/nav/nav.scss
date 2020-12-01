@@ -1,16 +1,38 @@
 @import '../../styles/mixins';
 
 .navBar {
-    @include desktop {
-        width: 450px;
+    @include tablet {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 }
 
+.header {
+    text-align: center;
+}
+
 .nav {
-    width: 150px;
+    height: 100px;
+    width: 767px;
+    border-top: 1px solid white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Code Pro', monospace;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: -383.5px;
+    p {
+        padding: 10px;
+    }
+    @include tablet {
+        height: unset;
+        width: unset;
+        border-top: none;
+        position: unset;
+        margin-left: unset;
+        justify-content: unset;
+    }
 }

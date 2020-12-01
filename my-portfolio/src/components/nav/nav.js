@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './nav.scss';
 
-class Hero extends Component {
+class Nav extends Component {
     render() {
         return (
             <section className="navBar">
@@ -16,4 +16,4 @@ class Hero extends Component {
     }
 }
 
-export default Hero;
+export default Nav;
