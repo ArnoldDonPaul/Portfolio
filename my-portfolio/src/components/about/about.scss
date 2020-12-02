@@ -1,0 +1,25 @@
+@import '../../styles/mixins';
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+.about {
+border-top: 1px solid white;
+border-bottom: 1px solid white;
+padding: 20px 0;
+    &__header {
+        font-family: 'Futura';
+        font-size: 36px;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+    &__subheader {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 18px;
+        text-decoration: underline;
+        font-weight: unset;
+    }
+    &__text {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 18px;
+        margin: 15px 0 0 0;
+    }
+}

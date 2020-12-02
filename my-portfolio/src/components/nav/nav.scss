@@ -9,6 +9,9 @@
 }
 
 .header {
+    font-family: 'Futura';
+    font-size: 36px;
+    letter-spacing: 3px;
     text-align: center;
 }
 
@@ -16,10 +19,12 @@
     height: 100px;
     width: 767px;
     border-top: 1px solid white;
+    background-color: #262121;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Source Code Pro', monospace;
+    font-size: 24px;
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -34,5 +39,10 @@
         position: unset;
         margin-left: unset;
         justify-content: unset;
+        cursor: default;
+        &__link:hover {
+            opacity: .5;
+            cursor: pointer;
+        }
     }
 }

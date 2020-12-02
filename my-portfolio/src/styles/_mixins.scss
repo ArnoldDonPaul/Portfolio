@@ -11,3 +11,13 @@
         @content;
     }
 }
+
+@font-face {
+    font-family: 'Futura';
+    src: local('Futura'), url(../assets/fonts/FuturaStd-Medium.otf)
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap')
+}

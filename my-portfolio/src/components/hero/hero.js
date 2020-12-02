@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import './hero.scss';
 
-//array of text that will populate onClick
+//array of text that will populate "web developer ___" onClick
 let myArray = [
     //fun
     "because I couldn't become Spider-Man.",
-    "& all of your base are belong to me.",
+    "& all your base are belong to us.",
     "& <div>{funnyText}</div>",
-    "who will never not pet a dog.",
-    "& black belt in Kung Fu.",
-    "who thinks alpacas are delightful.",
-    "who's happy you clicked the button.",
-    "& coffee is my life force.",
-    "by day, billionaire vigilante by night. ᶻᶻᶻ",
     "& sometimes a huge nerd.",
-    "& amateur card magician.",
-    "& occasional rock climber.",
+    "who will never not pet a dog.",
+    "who's happy you clicked the button.",
+    "whose life force is coffee.",
+    "by day, billionaire vigilante by night. ᶻᶻᶻ",
     "of Slytherin House.",
-    //less fun
+    ">ERR! I'm sorry, D̴a̵̠̚v̴̯̇e̵̩̚. I'm afraid I can't do that.",
+    // //less fun
     "that built this site using React.",
     "who is constantly learning.",
     "that's open to new opportunities.",
@@ -25,6 +22,15 @@ let myArray = [
     "with a UX design certificate.",
     "who collaborates well with others.",
     "that creates user-friendly experiences.",
+    // //interests
+    "& black sash in Kung Fu.",
+    "& video game enthusiast.",
+    "& collector of comic books.",
+    "& watcher of many movies.",
+    "& amateur card magician.",
+    "& occasional rock climber.",
+    "attempting to learn the ukelele.",
+    "who thinks alpacas are delightful.",
 ];
 
 //set the length of the array to a variable to make it dynamic
@@ -62,7 +68,7 @@ class Hero extends Component {
                     myArray.splice(i, 1)
                 }
             }
-            //when my array is empty it will repopulate with newArray
+            //when myArray is empty it will repopulate with newArray
             if (newArray.length === arrayLength) {
                 for (i = 0; i <= arrayLength - 2; i++) {
                     myArray.push(newArray[i])
@@ -70,18 +76,17 @@ class Hero extends Component {
                 newArray.splice(0, arrayLength)
                 newArray.push(String(arrayItem))
             }
-
+            //function to simulate typing
             var j = 0
             function type() {
                 if (j < newItem.length) {
                     document.getElementById("randomized").innerHTML += newItem.charAt(j);
                     j++;
-                    setTimeout(type, 30)
+                    setTimeout(type, 30)//typing speed
                 }
             }
 
-
-            type()
+            type()//starts typing once the arrays have been updated
 
             console.log(myArray)
             console.log(newArray)
@@ -94,8 +99,13 @@ class Hero extends Component {
                 <div className="hero">
                     <p className="hero__text">web developer</p>
                     <div className="hero__dynamicSection">
-                        <p><span className="hero__text--dynamic" id="randomized">based in Toronto, Canada.</span><span className="hero__text--blink">|</span></p>
-                        <div className="hero__button" onClick={changeDisplay}><span className="hero__button--dice" role="img" aria-label="dice">🎲</span></div>
+                        <p>
+                            <span className="hero__text--dynamic" id="randomized">based in Toronto, Canada.</span>
+                            <span className="hero__text--blink">|</span>
+                        </p>
+                        <div className="hero__button" onClick={changeDisplay}>
+                            <span className="hero__button--dice" role="img" aria-label="dice">🎲</span>
+                        </div>
                     </div>
                 </div>
             </>

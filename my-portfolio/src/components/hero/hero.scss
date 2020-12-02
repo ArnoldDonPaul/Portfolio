@@ -1,22 +1,23 @@
 @import '../../styles/mixins';
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 .hero {
-      display: flex;
-      color: white;
-      align-items: center;
-      font-family: 'Source Code Pro', monospace;
-      font-size: 18px;
-      justify-content: left;
-      &__text{
+    margin: 10px 0 50px;
+    display: flex;
+    color: white;
+    align-items: center;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18px;
+    justify-content: left;
+    cursor: default;
+    &__text{
           width: fit-content;
           display: flex;
           margin: 2px;
-          padding-right: 8px;
+          padding-right: 7px;
           &--blink {
                 position: relative;
                 background-position: relative;
-                bottom: 1.5px;
+                bottom: 2.5px;
                 left: -4px;
                 animation: blinker 1s linear infinite;
                 -webkit-user-select: none;
