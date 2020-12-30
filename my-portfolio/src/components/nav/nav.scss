@@ -32,6 +32,9 @@
     p {
         padding: 10px;
     }
+    &__link:hover {
+        cursor: pointer;
+    }
     @include tablet {
         height: unset;
         width: unset;
@@ -42,7 +45,6 @@
         cursor: default;
         &__link:hover {
             opacity: .5;
-            cursor: pointer;
         }
     }
 }
