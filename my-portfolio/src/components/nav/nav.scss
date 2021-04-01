@@ -34,6 +34,7 @@
     }
     &__link:hover {
         cursor: pointer;
+        opacity: .5;
     }
     @include tablet {
         height: unset;
@@ -43,8 +44,5 @@
         margin-left: unset;
         justify-content: unset;
         cursor: default;
-        &__link:hover {
-            opacity: .5;
-        }
     }
 }

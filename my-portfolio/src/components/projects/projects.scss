@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 .projects {
-    margin-bottom: 20px;
     &__header {
         font-family: 'Futura';
         font-size: 36px;
@@ -12,7 +11,6 @@
     &__text {
         font-family: 'Source Code Pro', monospace;
         font-size: 18px;
-        margin: 15px 0 0 0;
     }
     &__link {
         color: #000AFF;
@@ -20,5 +18,23 @@
     }
     &__link:hover {
         opacity: 0.95;
+    }
+}
+
+.projectBox {
+    margin: 20px 0;
+    display: flex;
+    &__image {
+        opacity: .9;
+        border: solid 3px white;
+        border-radius: 10%;
+        width:fit-content;
+        height: fit-content;
+        margin: 0 auto;
+    }
+    &__image:hover {
+        border: solid 3px #000AFF;
+        opacity: 1;
+        cursor: pointer;
     }
 }
