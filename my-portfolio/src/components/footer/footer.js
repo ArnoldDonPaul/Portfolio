@@ -7,6 +7,7 @@ import GitHub from '../../assets/Github_white.svg';
 
 class Footer extends Component {
     render() {
+        //Opens any external links as a new tab
         const openInNewTab = (url) => {
             const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
             if (newWindow) newWindow.opener = null

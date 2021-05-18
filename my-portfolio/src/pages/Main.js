@@ -6,6 +6,7 @@ import Nav from '../components/nav/nav'
 import Hero from '../components/hero/hero';
 import Projects from '../components/projects/projects'
 import About from '../components/about/about'
+import TypingGame from '../components/typingGame/typingGame'
 import Footer from '../components/footer/footer'
 
 class Main extends Component {
@@ -18,6 +19,7 @@ class Main extends Component {
         </div>
         <Projects />
         <About />
+        <TypingGame />
         <Footer />
       </>
     );
