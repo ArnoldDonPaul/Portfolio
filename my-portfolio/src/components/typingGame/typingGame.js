@@ -20,15 +20,14 @@ class TypingGame extends Component {
         super();
         //setting the initial states required
         this.state = {
-            points: 0,
+            points: 10,
             wordPrompt: 'start',
-            userInput: '', //refer to <input> field
+            userInput: '',
         }
     }
 
     //function to change displayed text if the userInput is correct
     changeDisplay = () => {
-
         //sets an empty array to store value of displayed array item
         let arrayItem = []
 
@@ -60,36 +59,50 @@ class TypingGame extends Component {
         }
         this.setState({ wordPrompt: newItem });
 
-        console.log(myArray)
-        console.log(newArray)
-        console.log(arrayItem)
-        console.log(newItem)
-        console.log(this.state.wordPrompt)
-        console.log(this.state.userInput)
+        console.log(this.state.start)
+
+        // console.log(myArray)
+        // console.log(newArray)
+        // console.log(arrayItem)
+        // console.log(newItem)
+        // console.log(this.state.wordPrompt)
+        // console.log(this.state.userInput)
     }
 
     enterPressed(event) {
         var code = event.keyCode || event.which;
-        if(code === 13) { //13 is the enter keycode
+        if (code === 13) { //13 is the enter keycode
             this.checkInput()
-        } 
+        }
+
     }
 
     //function to check if the user's input matches the word prompt
     checkInput = () => {
+
         //if the user's input matches the word prompt, add points to the user's total
         if (this.state.userInput === this.state.wordPrompt) {
             this.setState({ points: this.state.points + 5 });
-            console.log("success");
+            // console.log("success");
             this.changeDisplay()
-            this.setState({ userInput: ''})
+            this.setState({ userInput: '' })
             //if the user's input DOES NOT match the word prompt, subtract points from the user's total
         } else {
             this.setState({ points: this.state.points - 5 });
-            console.log("failure")
-            console.log(this.state.wordPrompt)
-            console.log(this.state.userInput)
+            // console.log("failure")
+            // console.log(this.state.wordPrompt)
+            // console.log(this.state.userInput)
         }
+
+    }
+
+    start = () => {
+        if (this.state.points > 0) {
+            setInterval(() => {
+                this.setState({ points: this.state.points - 1 })
+            }, 1000)
+        }
+        document.getElementById("userInput").focus();
     }
 
     render() {
@@ -98,7 +111,7 @@ class TypingGame extends Component {
                 <p id="helloWorld">{this.state.wordPrompt}</p>
                 <input id="userInput" placeholder="type spell here" value={this.state.userInput} onChange={(e) => this.setState({ userInput: e.target.value })} onKeyPress={this.enterPressed.bind(this)}></input>
                 <p>{this.state.points}</p>
-                {/* <button onClick={this.checkInput}></button> */}
+                <button onClick={this.start}></button>
             </section>
         );
     }
