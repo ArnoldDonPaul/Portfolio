@@ -20,8 +20,9 @@ class TypingGame extends Component {
         super();
         //setting the initial states required
         this.state = {
+            start: false,
             points: 10,
-            wordPrompt: 'start',
+            wordPrompt: '',
             userInput: '',
         }
     }
@@ -69,6 +70,7 @@ class TypingGame extends Component {
         // console.log(this.state.userInput)
     }
 
+    //executes the checkInput function when Enter is pressed on the keyboard by the user
     enterPressed(event) {
         var code = event.keyCode || event.which;
         if (code === 13) { //13 is the enter keycode
@@ -96,22 +98,47 @@ class TypingGame extends Component {
 
     }
 
+    //begins the timer and focuses on the input field after changing it from disabled to not disabled
     start = () => {
-        if (this.state.points > 0) {
-            setInterval(() => {
-                this.setState({ points: this.state.points - 1 })
-            }, 1000)
+        //if its GAME OVER, reset the points to 10 when the user clicks START
+        if (this.state.points === "LOSER") {
+            this.setState({ points: 10 })
         }
+        this.setState({ points: 10 })
+        this.points = setInterval(() => {
+            this.setState({ points: this.state.points - 2 })
+        }, 1000)
+        this.setState({ start: true })
+        this.setState({ wordPrompt: "magical words" })
+        document.getElementById("userInput").disabled = !document.getElementById("userInput").disabled
         document.getElementById("userInput").focus();
+        document.getElementById("userInput").placeholder = ""
+    }
+
+    gameOver = () => {
+        this.setState({ wordPrompt: "GAME OVER" })
+        this.setState({ points: "LOSER" })
+        clearInterval(this.points)
+        this.setState({ start: false })
+        document.getElementById("userInput").disabled = true
     }
 
     render() {
+        //when the points hit zero, initiate game over
+        if (this.state.points < 0) {
+            this.gameOver()
+        }
         return (
             <section>
                 <p id="helloWorld">{this.state.wordPrompt}</p>
-                <input id="userInput" placeholder="type spell here" value={this.state.userInput} onChange={(e) => this.setState({ userInput: e.target.value })} onKeyPress={this.enterPressed.bind(this)}></input>
+                <input id="userInput" placeholder="press START" value={this.state.userInput} onChange={(e) => this.setState({ userInput: e.target.value })} onKeyPress={this.enterPressed.bind(this)} disabled></input>
                 <p>{this.state.points}</p>
-                <button onClick={this.start}></button>
+                {
+                    this.state.start === false && (
+                        <button onClick={this.start}>START</button>
+                    )
+                }
+
             </section>
         );
     }
