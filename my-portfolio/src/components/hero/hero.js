@@ -23,14 +23,17 @@ let myArray = [
     "who collaborates well with others.",
     "that creates user-friendly experiences.",
     // //interests
+    "& personal trainer.",
+    "& Twitch streamer [ @feedsnacks ].",
     "& black sash in Kung Fu.",
     "& video game enthusiast.",
     "& collector of comic books.",
-    "& watcher of many movies.",
+    "& cinephile.",
     "& amateur card magician.",
     "& occasional rock climber.",
     "attempting to learn the ukelele.",
     "who thinks alpacas are delightful.",
+    "who can almost finish a Rubik's Cube.",
 ];
 
 //set the length of the array to a variable to make it dynamic

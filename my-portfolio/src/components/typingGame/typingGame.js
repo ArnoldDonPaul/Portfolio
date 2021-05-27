@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
 import './typingGame.scss';
 
+import nyanCat from '../../assets/images/NyanCat.gif'
+import nicCage from '../../assets/images/nicCage.jpg'
+
 //array of word prompts [spellbook]
 let myArray = [
-    "weenus erectus",
-    "leviOHsah",
+    "confusiate",
+    "traiteus",
+    "inceneus",
+    "leviaris",
+    "supresius",
+    "illumieseo",
+    "magnendio",
+    "extierio",
+    "defeneris",
+    "slugiato",
+    "repeotis",
+    "ethereos",
+    "neuralenum",
+    "duplior",
+    "muferous",
+    "stupendo",
+    "sanctaro",
+    "petrifiteus",
+    "corrupteous",
+    "reflecto",
+    "araeum",
+    "evicteris",
+    "isolotum",
+    "magnulso",
+    "tranquro",
+    "mystifecto",
     "kersplaticus",
-    "abrakablam"
+    "abrakablam",
 ];
 
 //set the length of the array to a variable to make it dynamic
@@ -21,6 +48,9 @@ class TypingGame extends Component {
         //setting the initial states required
         this.state = {
             start: false,
+            win: false,
+            lose: false,
+            neutral: false,
             points: 10,
             wordPrompt: '',
             userInput: '',
@@ -84,13 +114,13 @@ class TypingGame extends Component {
 
         //if the user's input matches the word prompt, add points to the user's total
         if (this.state.userInput === this.state.wordPrompt) {
-            this.setState({ points: this.state.points + 5 });
+            this.setState({ points: this.state.points + 10 });
             // console.log("success");
             this.changeDisplay()
             this.setState({ userInput: '' })
             //if the user's input DOES NOT match the word prompt, subtract points from the user's total
         } else {
-            this.setState({ points: this.state.points - 5 });
+            this.setState({ points: this.state.points - 3 });
             // console.log("failure")
             // console.log(this.state.wordPrompt)
             // console.log(this.state.userInput)
@@ -100,19 +130,28 @@ class TypingGame extends Component {
 
     //begins the timer and focuses on the input field after changing it from disabled to not disabled
     start = () => {
-        //if its GAME OVER, reset the points to 10 when the user clicks START
-        if (this.state.points === "LOSER") {
-            this.setState({ points: 10 })
-        }
         this.setState({ points: 10 })
         this.points = setInterval(() => {
             this.setState({ points: this.state.points - 2 })
         }, 1000)
+        this.changeDisplay()
+        this.setState({ win: false })
+        this.setState({ lose: false })
         this.setState({ start: true })
-        this.setState({ wordPrompt: "magical words" })
+        this.setState({ neutral: true })
         document.getElementById("userInput").disabled = !document.getElementById("userInput").disabled
         document.getElementById("userInput").focus();
         document.getElementById("userInput").placeholder = ""
+    }
+
+    winner = () => {
+        this.setState({ wordPrompt: "YOU DID IT!" })
+        this.setState({ points: "WINNER" })
+        clearInterval(this.points)
+        this.setState({ start: false })
+        this.setState({ neutral: false })
+        this.setState({ win: true })
+        document.getElementById("userInput").disabled = true
     }
 
     gameOver = () => {
@@ -120,18 +159,38 @@ class TypingGame extends Component {
         this.setState({ points: "LOSER" })
         clearInterval(this.points)
         this.setState({ start: false })
+        this.setState({ neutral: false })
+        this.setState({ lose: true })
         document.getElementById("userInput").disabled = true
     }
 
     render() {
-        //when the points hit zero, initiate game over
+
+        //when the points hit zero, initiate game over. when the points hit 50, initiate win function
         if (this.state.points < 0) {
             this.gameOver()
+        } else if (this.state.points > 50) {
+            this.winner()
         }
         return (
             <section>
-                <p id="helloWorld">{this.state.wordPrompt}</p>
-                <input id="userInput" placeholder="press START" value={this.state.userInput} onChange={(e) => this.setState({ userInput: e.target.value })} onKeyPress={this.enterPressed.bind(this)} disabled></input>
+                {
+                    this.state.win === true && (
+                        <img alt="win" src={nicCage}></img>
+                    )
+                }
+                {
+                    this.state.lose === true && (
+                        <img alt="lose" src={nicCage}></img>
+                    )
+                }
+                {
+                    this.state.neutral === true && (
+                        <img alt="neutral" src={nyanCat}></img>
+                    )
+                }
+                <p>{this.state.wordPrompt}</p>
+                <input id="userInput" autocomplete="off" placeholder="press START" value={this.state.userInput} onChange={(e) => this.setState({ userInput: e.target.value })} onKeyPress={this.enterPressed.bind(this)} disabled></input>
                 <p>{this.state.points}</p>
                 {
                     this.state.start === false && (
